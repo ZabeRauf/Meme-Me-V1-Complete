@@ -1,15 +1,15 @@
 //
-//  MemeViewController.swift
-//  Meme Me V1
+//  MemeEditorViewController.swift
+//  Meme Me V1 -> V2
 //
-//  Created by Zabe Rauf on 10/18/17.
-//  Copyright © 2017 Zaben. All rights reserved.
+//  Created by Zabe Rauf on 4/23/18.
+//  Copyright © 2018 Zaben. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
-
+class MemeEditorViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
+    
     // Outlets
     
     @IBOutlet weak var photoLibrary: UIBarButtonItem!
@@ -32,7 +32,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         var topMemeText: String
         var bottomMemeText: String
         var originalImage: UIImage
-        var memedImage : UIImage
+        var memedImage: UIImage
     }
     
     func prepareTextField(textField: UITextField, defaultText: String) {
@@ -98,7 +98,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     func unsubscribeFromKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-       NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -156,6 +156,10 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     func save(memedImage: UIImage) {
         // Create the meme
         let meme = Meme(topMemeText: topText.text!, bottomMemeText: bottomText.text!, originalImage: imagePicker.image!, memedImage: memedImage)
+        
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     // sourceType picker is fed a sourcetype and performs actions for the type.
@@ -185,11 +189,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         self.present(activityController, animated: true, completion: nil)
     }
     
-    @IBAction func cameraButton(_ sender: Any) {
+    @IBAction func cameraButton(_sender: Any) {
         pick(sourceType: .camera)
     }
-    
-
-
 }
-

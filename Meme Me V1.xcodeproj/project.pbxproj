@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		CF52A4771F97BEF700DC21EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52A4761F97BEF700DC21EE /* AppDelegate.swift */; };
-		CF52A4791F97BEF700DC21EE /* MemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52A4781F97BEF700DC21EE /* MemeViewController.swift */; };
 		CF52A47C1F97BEF700DC21EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF52A47A1F97BEF700DC21EE /* Main.storyboard */; };
 		CF52A47E1F97BEF700DC21EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF52A47D1F97BEF700DC21EE /* Assets.xcassets */; };
 		CF52A4811F97BEF700DC21EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF52A47F1F97BEF700DC21EE /* LaunchScreen.storyboard */; };
+		CF5C81F220A2C0CB00C0EFF2 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5C81F120A2C0CB00C0EFF2 /* CollectionViewCell.swift */; };
+		CF7EB97320A27F3F001C8525 /* MemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7EB97220A27F3F001C8525 /* MemeTableViewController.swift */; };
+		CFAC9697208E6AC9001AF452 /* MemeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAC9696208E6AC9001AF452 /* MemeCollectionViewController.swift */; };
+		CFAC9699208E70BF001AF452 /* MemeEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAC9698208E70BF001AF452 /* MemeEditorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CF52A4731F97BEF700DC21EE /* Meme Me V1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meme Me V1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF52A4761F97BEF700DC21EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CF52A4781F97BEF700DC21EE /* MemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeViewController.swift; sourceTree = "<group>"; };
 		CF52A47B1F97BEF700DC21EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CF52A47D1F97BEF700DC21EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF52A4801F97BEF700DC21EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF52A4821F97BEF700DC21EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF5C81F120A2C0CB00C0EFF2 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		CF7EB97220A27F3F001C8525 /* MemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeTableViewController.swift; sourceTree = "<group>"; };
+		CFAC9696208E6AC9001AF452 /* MemeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewController.swift; sourceTree = "<group>"; };
+		CFAC9698208E70BF001AF452 /* MemeEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeEditorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +61,10 @@
 			isa = PBXGroup;
 			children = (
 				CF52A4761F97BEF700DC21EE /* AppDelegate.swift */,
-				CF52A4781F97BEF700DC21EE /* MemeViewController.swift */,
+				CFAC9696208E6AC9001AF452 /* MemeCollectionViewController.swift */,
+				CFAC9698208E70BF001AF452 /* MemeEditorViewController.swift */,
+				CF7EB97220A27F3F001C8525 /* MemeTableViewController.swift */,
+				CF5C81F120A2C0CB00C0EFF2 /* CollectionViewCell.swift */,
 				CF52A47A1F97BEF700DC21EE /* Main.storyboard */,
 				CF52A47D1F97BEF700DC21EE /* Assets.xcassets */,
 				CF52A47F1F97BEF700DC21EE /* LaunchScreen.storyboard */,
@@ -91,7 +100,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Zaben;
 				TargetAttributes = {
 					CF52A4721F97BEF700DC21EE = {
@@ -136,8 +145,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF52A4791F97BEF700DC21EE /* MemeViewController.swift in Sources */,
+				CFAC9697208E6AC9001AF452 /* MemeCollectionViewController.swift in Sources */,
+				CF5C81F220A2C0CB00C0EFF2 /* CollectionViewCell.swift in Sources */,
 				CF52A4771F97BEF700DC21EE /* AppDelegate.swift in Sources */,
+				CF7EB97320A27F3F001C8525 /* MemeTableViewController.swift in Sources */,
+				CFAC9699208E70BF001AF452 /* MemeEditorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +189,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -184,6 +197,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -234,6 +248,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -241,6 +256,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
