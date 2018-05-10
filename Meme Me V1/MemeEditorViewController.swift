@@ -28,13 +28,6 @@ class MemeEditorViewController: UIViewController, UINavigationControllerDelegate
         NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 38)!,
         NSAttributedStringKey.strokeWidth.rawValue: -3.5]
     
-    struct Meme {
-        var topMemeText: String
-        var bottomMemeText: String
-        var originalImage: UIImage
-        var memedImage: UIImage
-    }
-    
     func prepareTextField(textField: UITextField, defaultText: String) {
         textField.defaultTextAttributes = memeTextAttributes
         textField.textAlignment = .center
@@ -155,11 +148,17 @@ class MemeEditorViewController: UIViewController, UINavigationControllerDelegate
     
     func save(memedImage: UIImage) {
         // Create the meme
+        topToolbar.isHidden = true
+        bottomToolbar.isHidden = true
+        
         let meme = Meme(topMemeText: topText.text!, bottomMemeText: bottomText.text!, originalImage: imagePicker.image!, memedImage: memedImage)
         
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
+        
+        topToolbar.isHidden = false
+        bottomToolbar.isHidden = false
     }
     
     // sourceType picker is fed a sourcetype and performs actions for the type.

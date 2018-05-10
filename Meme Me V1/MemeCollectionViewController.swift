@@ -10,88 +10,45 @@ import UIKit
 
 class MemeCollectionViewController: UICollectionViewController {
     
-    struct Meme {
-        var topMemeText: String
-        var bottomMemeText: String
-        var originalImage: UIImage
-        var memedImage: UIImage
-    }
-    
-    var memes = [Meme]()
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var memes: [Meme]!
     //let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         memes = appDelegate.memes
         navigationItem.title = "Meme Collection!"
-        collectionView?.reloadData()
-        collectionView?.backgroundColor = UIColor.white
+        collectionView?.backgroundColor = UIColor.gray
+        
+        self.collectionView?.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cellLayout()
-    }
-    
-    // got help from another student for this and the layout idea depending on orientation
-    // it seemed pretty cool.
-    struct Constants {
-        static let CellVerticalSpacing: CGFloat = 2
-    }
-    
-    // This method determines the cell layout
-    // depending on the devices orientation.
-    func cellLayout() {
-        var cellWidth: CGFloat
-        var numWide: CGFloat
         
-        // This method sets the amount of cells that will
-        // display depending on the devices orientation.
-        switch UIDevice.current.orientation {
-            case .portrait:
-                numWide = 3
-            case .portraitUpsideDown:
-                numWide = 3
-            case .landscapeLeft:
-                numWide = 4
-            case .landscapeRight:
-                numWide = 4
-            default:
-                numWide = 4
-        }
-        
-        cellWidth = collectionView!.frame.width / numWide
-        cellWidth -= Constants.CellVerticalSpacing
-        
-        flowLayout.itemSize.width = cellWidth
-        flowLayout.itemSize.height = cellWidth
-        flowLayout.minimumInteritemSpacing = Constants.CellVerticalSpacing
-        
-        let actualCellVerticalSpacing: CGFloat = (collectionView!.frame.width - (numWide * cellWidth))/(numWide - 1)
-        flowLayout.minimumLineSpacing = actualCellVerticalSpacing
-        flowLayout.invalidateLayout()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        collectionView!.reloadData()
-    }
-    
-    func numberOfSections(collectionView: UICollectionView) -> Int {
-        return 1
+        let space:CGFloat = 3.0
+        let dimension = (view.frame.size.width - (2 * space)) / 3.0
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.memes.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let meme = self.memes[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath as IndexPath) as! CollectionViewCell
-        cell.memeImageView.image = meme.memedImage
-        cell.memeImageView.contentMode = UIViewContentMode.scaleAspectFill
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
+        cell.memeImageView.image = memes[indexPath.row].memedImage
         return cell
+    }
+    
+    // detail view stuff
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "MemeDetailView") as! detailViewController
+        detailVC.meme = self.memes[indexPath.row]
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
 }

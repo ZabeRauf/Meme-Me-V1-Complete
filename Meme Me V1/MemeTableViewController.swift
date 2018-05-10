@@ -9,13 +9,6 @@
 import UIKit
 
 class MemeTableViewController: UITableViewController {
-  
-    struct Meme {
-        var topMemeText: String
-        var bottomMemeText: String
-        var originalImage: UIImage
-        var memedImage: UIImage
-    }
     
     var memes: [Meme]!
     
@@ -36,4 +29,23 @@ class MemeTableViewController: UITableViewController {
         let object = UIApplication.shared.delegate
         return object as! AppDelegate
     }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return memes.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell") as! MemeTableViewCell
+        cell.memeImageView?.image = memes[indexPath.row].memedImage
+        cell.Label?.text = "\(memes[indexPath.row].topMemeText)...\(memes[indexPath.row].bottomMemeText)"
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "MemeDetailView") as! detailViewController
+        detailVC.meme = self.memes[indexPath.row]
+        
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
 }
